@@ -19,6 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         print("didFinishLaunchingWithOptions")
+        
+         do {
+            let realm = try Realm()
+        } catch {
+            print("Error initialising new Realm: \(error)")
+        }
+        print(Realm.Configuration.defaultConfiguration.fileURL)
         return true
     }
 
@@ -40,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
     
-    // MARK: - Core Data Saving support
+    //MARK: - Core Data Saving support
     
     func saveContext () {
         let context = persistentContainer.viewContext
